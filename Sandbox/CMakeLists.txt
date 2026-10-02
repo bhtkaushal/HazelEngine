@@ -13,6 +13,7 @@ add_executable(Sandbox
 # Link the Hazel library target into Sandbox; add Hazel/src for Hazel.h;
 target_link_libraries(Sandbox PRIVATE Hazel)
 target_include_directories(Sandbox PRIVATE "${CMAKE_SOURCE_DIR}/Hazel/src")
+target_link_libraries(Sandbox PUBLIC spdlog::spdlog)
 
 # Automatically copy Hazel.dll to Sandbox's output directory
 add_custom_command(TARGET Sandbox POST_BUILD

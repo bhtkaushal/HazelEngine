@@ -1,18 +1,14 @@
 #pragma once
 
-#include <string>
-#include <functional>
-#include <sstream>
-#include <ostream>
+#if defined(__APPLE__) && defined(__MACH__)
+    #define HZ_PLATFORM_MACOS
+#endif
 
 #ifdef HZ_PLATFORM_MACOS
-    #ifdef HZ_BUILD_DLL
-        #define HAZEL_API __attribute__((visibility("default")))
-    #else
-        #define HAZEL_API __attribute__((visibility("default")))
-    #endif
+    #define HAZEL_API __attribute__((visibility("default")))
 #else
     #error Working on Macs only for now!
 #endif
+
 
 #define BIN(x) (1 << x) 

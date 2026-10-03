@@ -20,15 +20,17 @@ add_library(Hazel SHARED
         src/Hazel/Events/KeyEvent.h
         src/Hazel/Events/MouseEvent.h
         src/Hazel/Events/ApplicationEvent.h
+        src/hzpch.h
 )
 
+target_precompile_headers(Hazel PRIVATE src/hzpch.h)
 target_include_directories(Hazel PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include
 )
 
 target_link_libraries(Hazel PUBLIC spdlog::spdlog)
-target_compile_definitions (Hazel PRIVATE
-        HZ_PLATFORM_MACOS
-        HZ_BUILD_DLL
-)
+#target_compile_definitions (Hazel PRIVATE
+#        HZ_PLATFORM_MACOS
+#        HZ_BUILD_DLL
+#)

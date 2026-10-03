@@ -22,5 +22,5 @@ add_custom_command(TARGET Sandbox POST_BUILD
         $<TARGET_FILE_DIR:Sandbox>
 )
 
-target_compile_definitions(Sandbox PRIVATE HZ_PLATFORM_MACOS)
+#target_compile_definitions(Sandbox PRIVATE HZ_PLATFORM_MACOS)
 target_link_libraries(Sandbox PRIVATE Hazel)

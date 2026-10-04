@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Hazel/Log.h"
+
 #ifdef __APPLE__
     #include <CoreFoundation/CoreFoundation.h>
 #endif

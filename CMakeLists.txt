@@ -16,6 +16,7 @@ set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
 #)
 #FetchContent_MakeAvailable(spdlog)
 add_subdirectory(Hazel/vendor/spdlog)
+add_subdirectory(Hazel/vendor/GLFW)
 
 # Delegate build logic to subfolders
 add_subdirectory(Sandbox)

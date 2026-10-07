@@ -16,7 +16,7 @@ namespace Hazel {
             const int height = 720 ,
             std::string title = "Hazel Engine"
         )
-            : width(width), height(height), title(std::move(title)) {
+            :width(width), height(height), title(std::move(title)) {
         }
     };
 

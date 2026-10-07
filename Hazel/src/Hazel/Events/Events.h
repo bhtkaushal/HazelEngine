@@ -1,5 +1,6 @@
 #pragma once
 
+#include "hzpch.h"
 #include "Hazel/Core.h"
 
 namespace Hazel {
@@ -55,7 +56,7 @@ namespace Hazel {
             :event(event) {}
 
         template<typename T>
-        bool Dispatcher(eventFn<T> fn) {
+        bool Dispatch(eventFn<T> fn) {
             if (event.getEventType() == T::getStaticType()) {
                 event.handled = fn(*reinterpret_cast<T*>(&event));
                 return true;

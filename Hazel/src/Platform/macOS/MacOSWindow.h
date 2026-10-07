@@ -13,7 +13,7 @@ namespace Hazel {
       inline int getWidth() override { return static_cast<int>(data.width); }
       inline int getHeight() override {return static_cast<int>(data.height); }
 
-      void setEventCallback(const EventCallbackFn &callbackFn) override { data.eventCallback = callbackFn; }
+      inline void setEventCallback(const EventCallbackFn &callbackFn) override { data.eventCallback = callbackFn; }
       void setVSync(bool enabled) override;
       bool isVSync() override;
 
@@ -21,7 +21,7 @@ namespace Hazel {
       virtual void init(const WindowProperties& properties);
       virtual void shutdown();
 
-      GLFWwindow* window{};
+      GLFWwindow* window;
       struct WindowData {
          std::string title;
          unsigned int width, height;

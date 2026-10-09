@@ -28,6 +28,10 @@ add_library(Hazel SHARED
         src/Hazel/Window.h
         src/Platform/macOS/MacOSWindow.cpp
         src/Platform/macOS/MacOSWindow.h
+        src/Hazel/Layer.cpp
+        src/Hazel/Layer.h
+        src/Hazel/LayerStack.cpp
+        src/Hazel/LayerStack.h
 )
 
 target_precompile_headers(Hazel PRIVATE src/hzpch.h)

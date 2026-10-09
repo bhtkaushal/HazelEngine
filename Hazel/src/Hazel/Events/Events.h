@@ -43,7 +43,7 @@ namespace Hazel {
         [[nodiscard]] inline bool isInCategory(const EventCategory category) const {
             return getEventCategoryFlag() & category;
         }
-    protected:
+    public:
         bool handled = false;
     };
 

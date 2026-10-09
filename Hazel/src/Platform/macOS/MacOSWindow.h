@@ -21,7 +21,7 @@ namespace Hazel {
       virtual void init(const WindowProperties& properties);
       virtual void shutdown();
 
-      GLFWwindow* window;
+      GLFWwindow* window{};
       struct WindowData {
          std::string title;
          unsigned int width, height;

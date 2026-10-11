@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
     HZ_CORE_WARN("Initializing Logger...");
     HZ_INFO("Hazel Engine!");
     const auto app = Hazel::CreateApplication();
-    app->run();
+    app->Run();
     delete app;
 }
 #endif

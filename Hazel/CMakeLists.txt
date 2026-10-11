@@ -28,6 +28,11 @@ add_library(Hazel SHARED
         src/Hazel/Window.h
         src/Platform/macOS/MacOSWindow.cpp
         src/Platform/macOS/MacOSWindow.h
+
+        src/Hazel/Layer.h
+        src/Hazel/Layer.cpp
+        src/Hazel/LayerStack.h
+        src/Hazel/LayerStack.cpp
 )
 
 target_precompile_headers(Hazel PRIVATE src/hzpch.h)
@@ -35,6 +40,7 @@ target_include_directories(Hazel PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui
 )
 
 find_package(OpenGL REQUIRED)
@@ -42,6 +48,7 @@ target_link_libraries(Hazel PUBLIC
         spdlog::spdlog
         glfw
         OpenGL::GL
+        ImGui
 )
 #target_compile_definitions (Hazel PRIVATE
 #        HZ_PLATFORM_MACOS

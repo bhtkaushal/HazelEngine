@@ -7,16 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Executables search their own directory for dynamic libraries (.dylib); MacOS specific
 set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
 
-# External libraries/modules
-#include(FetchContent)
-#FetchContent_Declare(
-#        spdlog
-#        GIT_REPOSITORY [https://github.com/gabime/spdlog.git](https://github.com/gabime/spdlog.git)
-#        GIT_TAG v1.0.0
-#)
-#FetchContent_MakeAvailable(spdlog)
 add_subdirectory(Hazel/vendor/spdlog)
 add_subdirectory(Hazel/vendor/GLFW)
+add_subdirectory(Hazel/vendor/imgui)
 
 # Delegate build logic to subfolders
 add_subdirectory(Sandbox)

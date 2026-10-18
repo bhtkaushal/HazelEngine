@@ -17,7 +17,10 @@ namespace {
 
     class Sandbox: public Hazel::Application {
     public:
-        Sandbox() { pushLayer(new LayerInstance()); }
+        Sandbox() {
+            pushLayer(new LayerInstance());
+            pushOverlay(new Hazel::ImGuiLayer());
+        }
         ~Sandbox() override = default;
     };
 }

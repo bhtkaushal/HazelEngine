@@ -5,6 +5,7 @@
 #include "Hazel/LayerStack.h"
 #include "Hazel/Events/Events.h"
 #include "Hazel/Events/ApplicationEvent.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace Hazel {
     class HAZEL_API Application {
@@ -13,6 +14,8 @@ namespace Hazel {
         virtual ~Application();
 
         void run();
+        inline static Application& get() { return *instance; }
+        [[nodiscard]] inline Window& getWindow() const { return *window; }
         void pushLayer(Layer *layer);
         void pushOverlay(Layer *layer);
         void onEvent(Event& e);
@@ -23,8 +26,13 @@ namespace Hazel {
         std::unique_ptr<Window> window;
         bool running = true;
         LayerStack layerStack;
+        ImGuiLayer* imGuiLayer;
+
+    private:
+        static Application* instance;
     };
-    // Implemented in CLIENT;
+
+    // Implement in CLIENT;
     Application* CreateApplication();
 
 }

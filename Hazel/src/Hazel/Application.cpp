@@ -4,7 +4,13 @@
 
 namespace Hazel {
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
+    Application* Application::instance = nullptr;
+
     Application::Application() {
+        HZ_ASSERT(instance, "Another instance of application already exists!");
+        instance = this;
+
         window = std::unique_ptr<Window>(Window::create());
         window->setEventCallback(BIND_EVENT_FN(Application::onEvent));
     };
@@ -15,9 +21,12 @@ namespace Hazel {
             glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            imGuiLayer->begin();
             for (Layer* layer: layerStack) {
                 layer->onUpdate();
+                imGuiLayer->onRender();
             }
+            imGuiLayer->end();
             window->onUpdate();
         }
     }
@@ -42,9 +51,11 @@ namespace Hazel {
 
     void Application::pushLayer(Layer *layer) {
         layerStack.pushLayer(layer);
+        layer->onAttach();
     }
 
     void Application::pushOverlay(Layer *layer) {
         layerStack.popOverlay(layer);
+        layer->onAttach();
     }
 }

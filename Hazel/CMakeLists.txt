@@ -33,6 +33,9 @@ add_library(Hazel SHARED
         src/Hazel/Layer.cpp
         src/Hazel/LayerStack.h
         src/Hazel/LayerStack.cpp
+
+        src/Hazel/ImGui/ImGuiLayer.h
+        src/Hazel/ImGui/ImGuiLayer.cpp
 )
 
 target_precompile_headers(Hazel PRIVATE src/hzpch.h)

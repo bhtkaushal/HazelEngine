@@ -3,16 +3,15 @@
 #include <GLFW/glfw3.h>
 
 namespace Hazel {
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
     Application* Application::instance = nullptr;
 
     Application::Application() {
-        HZ_ASSERT(instance, "Another instance of application already exists!");
+        HZ_ASSERT(!instance, "Another instance of application already exists!");
         instance = this;
 
         window = std::unique_ptr<Window>(Window::create());
-        window->setEventCallback(BIND_EVENT_FN(Application::onEvent));
+        window->setEventCallback(HZ_BIND_EVENT_FN(Application::onEvent));
     };
     Application::~Application() = default;
 
@@ -21,9 +20,11 @@ namespace Hazel {
             glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            imGuiLayer->begin();
             for (Layer* layer: layerStack) {
                 layer->onUpdate();
+            }
+            imGuiLayer->begin();
+            for (Layer* _: layerStack) {
                 imGuiLayer->onRender();
             }
             imGuiLayer->end();
@@ -33,11 +34,11 @@ namespace Hazel {
 
     void Application::onEvent(Event &e) {
         EventDispatcher dispatcher(e);
-        dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::onWindowClose));
+        dispatcher.Dispatch<WindowCloseEvent>(HZ_BIND_EVENT_FN(Application::onWindowClose));
         HZ_CORE_TRACE("{0}", e.toString());
 
         // for (auto it = layerStack.end(); it != layerStack.begin();) {
-        for(auto* it: layerStack | std::ranges::views::reverse) {
+        for(auto* _: layerStack | std::ranges::views::reverse) {
             // (*--it)->onEvent(e); // redact if diff-loop is used;
             if (e.handled)
                 break;

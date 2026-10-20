@@ -52,13 +52,12 @@ namespace Hazel {
         setVSync(true);
 
         // GLFW Callbacks;
-
         // Resize Event;
         glfwSetWindowSizeCallback(window, [](GLFWwindow* window, const int width, const int height) {
             auto data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+
             data.width = width;
             data.height = height;
-
             WindowResizeEvent event(static_cast<float>(width), static_cast<float>(height));
             data.eventCallback(event);
         });
@@ -66,6 +65,7 @@ namespace Hazel {
         // Close Event;
         glfwSetWindowCloseCallback(window, [](GLFWwindow* window) {
             const auto data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+
             WindowCloseEvent event;
             data.eventCallback(event);
         });
@@ -95,6 +95,14 @@ namespace Hazel {
             }
         });
 
+        // Key Typed Event;
+        glfwSetCharCallback(window, [](GLFWwindow* window, const unsigned int codepoint) {
+            const auto data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+
+            KeyTypedEvent event(static_cast<int>(codepoint));
+            data.eventCallback(event);
+        });
+
         // Mouse Event;
         glfwSetMouseButtonCallback(window, [](GLFWwindow* window, const int button, const int action, const int mods) {
             const auto data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
@@ -118,6 +126,7 @@ namespace Hazel {
         // Scroll Event;
         glfwSetScrollCallback(window, [](GLFWwindow* window, const double xoffset, const double yoffset) {
             const auto data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+
             MouseScrollEvent event(static_cast<float>(xoffset), static_cast<float>(yoffset));
             data.eventCallback(event);
         });
@@ -125,6 +134,7 @@ namespace Hazel {
         // Mouse-moved Event;
         glfwSetCursorPosCallback(window, [](GLFWwindow* window, const double xpos, const double ypos) {
             const auto data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+
             MouseMovedEvent event(static_cast<float>(xpos), static_cast<float>(ypos));
             data.eventCallback(event);
         });

@@ -26,7 +26,7 @@ namespace Hazel {
         std::unique_ptr<Window> window;
         bool running = true;
         LayerStack layerStack;
-        ImGuiLayer* imGuiLayer;
+        ImGuiLayer* imGuiLayer{};
 
     private:
         static Application* instance;

@@ -33,9 +33,12 @@ add_library(Hazel SHARED
         src/Hazel/Layer.cpp
         src/Hazel/LayerStack.h
         src/Hazel/LayerStack.cpp
-
         src/Hazel/ImGui/ImGuiLayer.h
         src/Hazel/ImGui/ImGuiLayer.cpp
+
+        src/Hazel/Input.h
+        src/Platform/macOS/MacOSInput.cpp
+        src/Platform/macOS/MacOSInput.h
 )
 
 target_precompile_headers(Hazel PRIVATE src/hzpch.h)

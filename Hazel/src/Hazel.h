@@ -2,9 +2,14 @@
 
 // For Hazel applications use only;
 #include "Hazel/Application.h"
-#include "Hazel/LayerStack.h"
-#include "Hazel/ImGui/ImGuiLayer.h"
+#include "Hazel/Layer.h"
 #include "Hazel/Log.h"
+
+#include "Hazel/Input.h"
+#include "Hazel/KeyCode.h"
+#include "Hazel/MouseButtonCode.h"
+
+#include "Hazel/ImGui/ImGuiLayer.h"
 
 // Entry Point;
 #include "Hazel/EntryPoint.h"

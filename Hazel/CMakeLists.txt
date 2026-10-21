@@ -37,6 +37,8 @@ add_library(Hazel SHARED
         src/Hazel/ImGui/ImGuiLayer.cpp
 
         src/Hazel/Input.h
+        src/Hazel/KeyCode.h
+        src/Hazel/MouseButtonCode.h
         src/Platform/macOS/MacOSInput.cpp
         src/Platform/macOS/MacOSInput.h
 )

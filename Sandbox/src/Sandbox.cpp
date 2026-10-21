@@ -7,11 +7,16 @@ namespace {
             :Layer("Test") {}
 
         void onUpdate() override {
-            HZ_INFO("TestLayer::Update");
+            if (Hazel::Input::isKeyPressed(HZ_KEY_TAB))
+                HZ_TRACE("Tab key is pressed (poll)!");
         }
 
         void onEvent(Hazel::Event &event) override {
             HZ_TRACE("{0}", event.toString());
+            if (event.getEventType() == Hazel::EventType::KeyPressed) {
+                const auto& e = dynamic_cast<Hazel::KeyPressedEvent&>(event);
+                HZ_TRACE("{0}", static_cast<char>(e.getKeyCode()));
+            }
         }
     };
 

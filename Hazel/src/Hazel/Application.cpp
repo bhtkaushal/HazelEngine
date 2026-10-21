@@ -1,7 +1,8 @@
 #include "hzpch.h"
 #include "Application.h"
-#include "Platform/macOS/MacOSInput.h"
 #include <GLFW/glfw3.h>
+
+#include "Input.h"
 
 namespace Hazel {
 
@@ -25,8 +26,9 @@ namespace Hazel {
                 layer->onUpdate();
             }
 
-            // auto [x, y] = Input::getMousePosition();
-            // HZ_CORE_TRACE("{0}, {1}", x, y);
+            // TODO: Fix segmentation error;
+            auto [x, y] = Input::getMousePosition();
+            HZ_CORE_TRACE("{0}, {1}", x, y);
 
             imGuiLayer->begin();
             for (Layer* _: layerStack) {

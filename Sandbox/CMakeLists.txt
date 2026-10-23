@@ -20,6 +20,7 @@ target_link_libraries(Sandbox PUBLIC
         glfw
         OpenGL::GL
         ImGui
+        glm::glm
 )
 
 # Automatically copy Hazel.dll to Sandbox's output directory

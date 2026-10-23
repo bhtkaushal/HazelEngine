@@ -10,6 +10,7 @@ set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
 add_subdirectory(Hazel/vendor/spdlog)
 add_subdirectory(Hazel/vendor/GLFW)
 add_subdirectory(Hazel/vendor/imgui)
+add_subdirectory(Hazel/vendor/glm)
 
 # Delegate build logic to subfolders
 add_subdirectory(Sandbox)

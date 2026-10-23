@@ -49,6 +49,7 @@ target_include_directories(Hazel PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui
+        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm/glm
 )
 
 find_package(OpenGL REQUIRED)
@@ -57,6 +58,7 @@ target_link_libraries(Hazel PUBLIC
         glfw
         OpenGL::GL
         ImGui
+        glm::glm
 )
 #target_compile_definitions (Hazel PRIVATE
 #        HZ_PLATFORM_MACOS

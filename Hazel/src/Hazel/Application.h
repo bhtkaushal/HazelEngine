@@ -23,10 +23,10 @@ namespace Hazel {
     private:
         bool onWindowClose(WindowCloseEvent &e);
 
-        std::unique_ptr<Window> window;
         bool running = true;
-        LayerStack layerStack;
+        std::unique_ptr<Window> window;
         ImGuiLayer* imGuiLayer{};
+        LayerStack layerStack;
 
     private:
         static Application* instance;

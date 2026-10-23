@@ -12,6 +12,7 @@ namespace Hazel {
 
         virtual void onAttach() {};
         virtual void onDetach() {};
+        virtual void onImGuiRender() {};
         virtual void onUpdate() {};
         virtual void onEvent(Event& event) = 0;
 

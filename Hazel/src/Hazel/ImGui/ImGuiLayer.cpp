@@ -1,5 +1,4 @@
 #include "hzpch.h"
-#include "Hazel/Core.h"
 #include "ImGuiLayer.h"
 
 #include "imgui.h"
@@ -76,8 +75,8 @@ namespace Hazel {
 		}
 	}
 
-	void ImGuiLayer::onRender() {
-		bool showDemoWindow = true;
+	void ImGuiLayer::onImGuiRender() {
+		static bool showDemoWindow = true;
 		ImGui::ShowDemoWindow(&showDemoWindow);
 	}
 
@@ -85,64 +84,5 @@ namespace Hazel {
 		const ImGuiIO& io = ImGui::GetIO(); (void)io;
 		event.handled |= event.isInCategory(EventCategoryMouse) && io.WantCaptureMouse;
 		event.handled |= event.isInCategory(EventCategoryKeyboard) && io.WantCaptureKeyboard;
-
-		// EventDispatcher dispatcher(event);
-		// dispatcher.Dispatch<MouseButtonPressedEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::onMouseButtonPressedEvent));
-		// dispatcher.Dispatch<MouseButtonReleasedEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::onMouseButtonReleasedEvent));
-		// dispatcher.Dispatch<MouseScrollEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::onMouseScrollEvent));
-		// dispatcher.Dispatch<MouseMovedEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::onMouseMovedEvent));
-		// dispatcher.Dispatch<KeyPressedEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::onKeyPressedEvent));
-		// dispatcher.Dispatch<KeyReleasedEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::onKeyReleasedEvent));
-		// dispatcher.Dispatch<KeyTypedEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::onKeyTypedEvent));
-		// dispatcher.Dispatch<WindowResizeEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::onWindowResizeEvent));
 	}
-
-	// bool ImGuiLayer::onMouseButtonPressedEvent(const MouseButtonPressedEvent& event) {
-	// 	ImGuiIO& io = ImGui::GetIO();
-	// 	io.AddMouseButtonEvent(event.getMouseButton(), true);
-	// 	return false;
-	// }
-	//
-	// bool ImGuiLayer::onMouseButtonReleasedEvent(const MouseButtonReleasedEvent& event) {
-	// 	ImGuiIO& io = ImGui::GetIO();
-	// 	io.AddMouseButtonEvent(event.getMouseButton(), false);
-	// 	return false;
-	// }
-	//
-	// bool ImGuiLayer::onMouseScrollEvent(const MouseScrollEvent& event) {
-	// 	ImGuiIO& io = ImGui::GetIO();
-	// 	io.AddMouseWheelEvent(event.getXOffset(), event.getYOffset());
-	// 	return false;
-	// }
-	//
-	// bool ImGuiLayer::onMouseMovedEvent(const MouseMovedEvent& event) {
-	// 	ImGuiIO& io = ImGui::GetIO();
-	// 	io.AddMousePosEvent(event.getX(), event.getY());
-	// 	return false;
-	// }
-	//
-	// bool ImGuiLayer::onKeyPressedEvent(const KeyPressedEvent& event) {
-	// 	ImGuiIO& io = ImGui::GetIO();
-	// 	io.AddKeyEvent(static_cast<ImGuiKey>(event.getKeyCode()), true);
-	// 	return false;
-	// }
-	//
-	// bool ImGuiLayer::onKeyReleasedEvent(const KeyReleasedEvent& event) {
-	// 	ImGuiIO& io = ImGui::GetIO();
-	// 	io.AddKeyEvent(static_cast<ImGuiKey>(event.getKeyCode()), false);
-	// 	return false;
-	// }
-	//
-	// bool ImGuiLayer::onKeyTypedEvent (const KeyTypedEvent& event) {
-	// 	ImGuiIO& io = ImGui::GetIO();
-	// 	if (const auto keycode = event.getKeyCode(); keycode > 0 && keycode < 0x10000)
-	// 		io.AddInputCharacter(static_cast<unsigned short>(keycode));
-	// 	return false;
-	// }
-	//
-	// bool ImGuiLayer::onWindowResizeEvent(const WindowResizeEvent& event) {
-	// 	ImGuiIO& io = ImGui::GetIO();
-	// 	io.DisplaySize = ImVec2(event.getWidth(), event.getHeight());
-	// 	return false;
-	// }
 }

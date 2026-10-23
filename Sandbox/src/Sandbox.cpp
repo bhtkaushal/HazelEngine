@@ -1,4 +1,5 @@
 #include <Hazel.h>
+#include "imgui.h"
 
 namespace {
     class LayerInstance: public Hazel::Layer {
@@ -9,6 +10,15 @@ namespace {
         void onUpdate() override {
             if (Hazel::Input::isKeyPressed(HZ_KEY_TAB))
                 HZ_TRACE("Tab key is pressed (poll)!");
+        }
+
+        void onImGuiRender() override {
+            if (bool status = true; status) {
+                ImGui::Begin("Test Overlay", &status);
+                ImGui::Text("Metallic-Hazel");
+                ImGui::Button("Hazel");
+                ImGui::End();
+            }
         }
 
         void onEvent(Hazel::Event &event) override {
@@ -24,7 +34,6 @@ namespace {
     public:
         Sandbox() {
             pushLayer(new LayerInstance());
-            pushOverlay(new Hazel::ImGuiLayer());
         }
         ~Sandbox() override = default;
     };

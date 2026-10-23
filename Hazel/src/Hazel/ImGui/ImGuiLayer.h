@@ -6,8 +6,6 @@
 #include "Hazel/Events/MouseEvent.h"
 
 namespace Hazel {
-    class WindowResizeEvent;
-
     class HAZEL_API ImGuiLayer: public Layer {
     public:
         ImGuiLayer();
@@ -16,20 +14,10 @@ namespace Hazel {
         void onAttach() override;
         void onDetach() override;
         void onEvent(Event& event) override;
+        void onImGuiRender() override;
 
-        void begin();
-        void end();
-        void onRender();
-
-    private:
-        bool onMouseButtonPressedEvent(const MouseButtonPressedEvent& event);
-        bool onMouseButtonReleasedEvent(const MouseButtonReleasedEvent& event);
-        bool onMouseScrollEvent(const MouseScrollEvent& event);
-        bool onMouseMovedEvent(const MouseMovedEvent& event);
-        bool onKeyPressedEvent(const KeyPressedEvent& event);
-        bool onKeyReleasedEvent(const KeyReleasedEvent& event);
-        bool onKeyTypedEvent (const KeyTypedEvent& event);
-        bool onWindowResizeEvent(const WindowResizeEvent& event);
+        virtual void begin();
+        virtual void end();
 
     private:
         float Time = 0.0f;

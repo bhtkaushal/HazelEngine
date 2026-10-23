@@ -8,7 +8,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OUT_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OUT_DIR})
 
 # Hazel Target (.dll / .dylib)
-add_library(Hazel SHARED
+add_library(Hazel STATIC # TODO: figure out way to make it work in SHARED state;
         src/hzpch.h
         src/Hazel.h
         src/Hazel/Core.h

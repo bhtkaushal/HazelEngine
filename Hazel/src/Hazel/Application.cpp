@@ -1,7 +1,6 @@
 #include "hzpch.h"
 #include "Application.h"
 #include <GLFW/glfw3.h>
-#include "Input.h"
 
 namespace Hazel {
 
@@ -13,6 +12,9 @@ namespace Hazel {
 
         window = std::unique_ptr<Window>(Window::create());
         window->setEventCallback(HZ_BIND_EVENT_FN(Application::onEvent));
+
+        imGuiLayer = new ImGuiLayer;
+        pushOverlay(imGuiLayer);
     };
     Application::~Application() = default;
 
@@ -24,11 +26,13 @@ namespace Hazel {
             for (Layer* layer: layerStack) {
                 layer->onUpdate();
             }
+
             imGuiLayer->begin();
-            for (Layer* _: layerStack) {
-                imGuiLayer->onRender();
+            for (Layer* layer: layerStack) {
+                imGuiLayer->onImGuiRender();
             }
             imGuiLayer->end();
+
             window->onUpdate();
         }
     }
